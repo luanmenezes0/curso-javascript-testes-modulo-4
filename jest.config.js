@@ -8,6 +8,10 @@ module.exports = {
     '^test/(.*)$': '<rootDir>/test/$1',
   },
   collectCoverageFrom: ['<rootDir>/src/**/*.js'],
+  coveragePathIgnorePatterns: [
+    '<rootDir>/src/app.js',
+    '<rootDir>/src/bin',
+  ],
   watchPlugins: [
     'jest-watch-typeahead/filename',
     'jest-watch-typeahead/testname',

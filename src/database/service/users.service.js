@@ -1,5 +1,5 @@
-import { appError } from '@/utils';
-import { logger } from '@/utils';
+import { appError, logger } from '@/utils';
+
 import { User } from '@/database/models/user.model';
 
 export async function listUsers() {

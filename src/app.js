@@ -1,10 +1,10 @@
 /* istanbul ignore file */
-import logger from 'morgan';
-import express from 'express';
-import cookieParser from 'cookie-parser';
-import cors from 'cors';
 import { attachRouters } from '@/routes';
 import { logger as appLogger } from '@/utils';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import express from 'express';
+import logger from 'morgan';
 
 const app = express();
 

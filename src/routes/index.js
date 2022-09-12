@@ -1,12 +1,16 @@
+import { serviceMiddleware, userMiddleware } from '@/middleware';
 import homeRouter from './home.router';
 import ordersRouter from './orders.router';
 import productsRouter from './products.router';
-import { serviceMiddleware, userMiddleware } from '@/middleware';
 
-const routers = [{ '/': homeRouter }, { '/order': ordersRouter }];
+const routers = new Map([
+  ['/', homeRouter],
+  ['/order', ordersRouter],
+]);
 
 const middlewares = [serviceMiddleware.get, userMiddleware.get];
 
+// eslint-disable-next-line import/prefer-default-export
 export function attachRouters(app) {
   /**
    * products route está fora do loop abaixo para não
@@ -14,8 +18,8 @@ export function attachRouters(app) {
    */
   app.use('/api/products', productsRouter);
 
-  for (const routerObj of routers) {
-    const [resource, router] = Object.entries(routerObj)[0];
+  // eslint-disable-next-line no-restricted-syntax
+  for (const [resource, router] of routers) {
     // .....👇🏻 /api/order
     app.use(`/api${resource}`, middlewares, router);
   }

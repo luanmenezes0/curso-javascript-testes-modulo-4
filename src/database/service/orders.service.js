@@ -7,7 +7,7 @@ export async function listOrders(userid) {
       userid,
     };
 
-    return (await Order.findAll({ where })).map(order => {
+    return (await Order.findAll({ where })).map((order) => {
       order.products = JSON.parse(order.products);
       return order;
     });
